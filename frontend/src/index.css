@@ -1,0 +1,45 @@
+:root {
+  --font-primary: "Barlow", serif;
+  --color-primary: #00BFFF;
+  --color-secondary:rgba(18, 18, 242, 0.9);
+  --color-tertiary: #ffffff;
+  --color-quaternary: #808080;
+  --shadow-primary:0px 0px 10px rgba(0, 0, 0, 0.5);
+  --padding-small:.8rem;
+  --padding-medium:1.5rem;
+  --padding-large:2rem;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body{
+  font-family: var(--font-primary);
+  line-height: 1.5;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+fieldset{
+  border: 1px solid #0000005e;
+}
+

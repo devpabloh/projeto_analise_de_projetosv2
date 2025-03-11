@@ -1,0 +1,207 @@
+.userManagement {
+    padding: 1rem;
+    width: 100%;
+}
+
+.userTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 100%;
+    table-layout: fixed;
+}
+
+.userTable th,
+.userTable td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.userTable th {
+    background-color: var(--color-secondary);
+    color: white;
+    font-weight: 500;
+}
+
+.userTable tr:last-child td {
+    border-bottom: none;
+}
+
+.userTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.userTable tr:hover {
+    background-color: #f0f0f0;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.roleSelect {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+.deleteButton {
+    padding: 0.5rem 1rem;
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.deleteButton:hover {
+    background-color: #ff7875;
+}
+
+.currentUser {
+    background-color: rgba(var(--color-primary-rgb), 0.1) !important;
+}
+
+.currentUserLabel {
+    color: var(--color-secondary);
+    font-style: italic;
+}
+
+.error {
+    color: #ff4d4f;
+    padding: 1rem;
+    background-color: #fff1f0;
+    border: 1px solid #ffccc7;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.searchContainer {
+    margin-bottom: 20px;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.searchInput:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+    .userTable {
+        font-size: 14px;
+        width: 100%;
+        min-width: 600px;
+        display: table;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .userManagement {
+        padding: 0.5rem;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+    
+    .userTable th,
+    .userTable td {
+        padding: 0.5rem;
+        white-space: nowrap;
+    }
+    
+    .actions {
+        flex-direction: column;
+        gap: 0.25rem;
+        min-width: 120px;
+    }
+    
+    .roleSelect {
+        width: 100%;
+        margin-bottom: 0.25rem;
+    }
+    
+    .deleteButton {
+        width: 100%;
+        padding: 0.4rem;
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .userTable {
+        border-radius: 4px;
+        min-width: 500px;
+    }
+    
+    .userManagement {
+        overflow-x: auto;
+    }
+    
+    .userManagement h2 {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .searchInput {
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    .searchContainer {
+        margin-bottom: 15px;
+    }
+}
+
+
+@media (max-width: 320px) {
+    .userManagement {
+        padding: 0.3rem;
+        overflow-x: auto;
+    }
+    
+    .userTable {
+        min-width: 450px;
+    }
+    
+    .userTable th,
+    .userTable td {
+        padding: 0.3rem;
+        font-size: 11px;
+    }
+    
+    .currentUserLabel {
+        font-size: 10px;
+    }
+    
+    .userManagement h2 {
+        font-size: 1rem;
+    }
+    
+    .searchInput {
+        padding: 6px;
+        font-size: 12px;
+    }
+    
+    .deleteButton {
+        padding: 0.3rem;
+        font-size: 10px;
+    }
+}

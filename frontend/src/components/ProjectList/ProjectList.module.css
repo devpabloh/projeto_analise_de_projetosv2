@@ -1,0 +1,89 @@
+.projectList {
+    padding: 1rem;
+}
+
+.searchContainer {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem
+}
+
+.searchInput {
+    flex: 1; 
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.filterSelect{
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.filterSelect{
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+.projectGrid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+}
+
+.projectCard{
+    background-color: #fff;
+    border-radius:8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.projectCard:hover{
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.projectCard h3{
+    margin: 0 0 1rem 0;
+    color: var(--color-secondary)
+}
+
+.description{
+    margin-bottom: 1rem;
+    color: #665;
+    display: -webkit-box; 
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden; 
+}
+
+.phase{
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.responsible{
+    font-size: 0.9rem;
+    color: #777;
+}
+
+@media (max-width: 768px){
+    .searchContainer{
+        flex-direction: column;
+    }
+
+    .projectGrid{
+        grid-template-columns: 1fr;
+    }
+}

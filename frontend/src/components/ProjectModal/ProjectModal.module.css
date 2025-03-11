@@ -1,0 +1,126 @@
+.overlayStyle{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modalStyle{
+    background-color: var(--color-tertiary);
+    padding: 20px;
+    border-radius: 6px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    scrollbar-width: thin; 
+    
+    scrollbar-color: rgba(155, 155, 155, 0.253) transparent;
+    width: 80vw;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.548);
+}
+
+.modalStyle form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modalStyle fieldset {
+    padding: 15px;
+    border-radius: 6px;
+    
+}
+
+.modalStyle div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.modalStyle input,
+.modalStyle textarea{
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #0000005e;
+}
+
+.containerButtons{
+    display: flex;
+    flex-direction: row;
+}
+
+.containerButtons button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.containerButtons button:hover {
+    scale: none;
+}
+
+.containerTitles{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.divTextArea{
+    width: 100%;
+}
+
+.containerInputCheck {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.containerInputCheck div {
+    display: flex;
+    align-items: center;
+    min-width: 200px; 
+}
+
+.outrosTestesArea {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.outrosTestesArea textarea {
+    width: 95%;
+    min-height: 80px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+@media (max-width: 720px) {
+    .modalStyle {
+        width: 85vw;
+        padding: 8px;
+    }
+    
+    .modalStyle fieldset {
+        padding: 8px;
+    }
+}

@@ -1,0 +1,70 @@
+.dashboardContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  position: relative;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.projectsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px;
+}
+
+.addButton {
+  margin-bottom: 20px;
+}
+
+.projectsList {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.projectItem {
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background-color: var(--color-quaternary);
+  box-shadow: var(--shadow-primary);
+}
+.projectItem h3 {
+    margin: 0 0 10px 0;
+    color: var(--color-primary);
+}
+
+.projectItem p {
+    margin: 5px 0;
+}
+
+.addButton {
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: var(--color-tertiary);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.addButton:hover {
+    background-color: var(--color-secondary);
+}

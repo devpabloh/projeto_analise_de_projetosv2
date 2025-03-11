@@ -1,0 +1,36 @@
+.containerFooter{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100vw;  /* Usa a largura total da viewport */
+  min-width: 100%;  /* Garante largura mínima de 100% */
+  background-color: var(--color-secondary);
+  padding: 1rem;
+  box-shadow: var(--shadow-primary);
+  position: fixed;  /* Fixa o header no topo */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+  
+}
+
+.containerFooter img {
+  width: 150px;
+  margin-right: 3rem;
+
+}
+
+@media (max-width: 768px){
+  .containerFooter img{
+    width: 100px;
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 320px){
+  .containerFooter img{
+    width: 70px;
+    margin: 0;
+  }
+}

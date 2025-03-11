@@ -1,0 +1,106 @@
+.containerGeral{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  filter: drop-shadow(var(--shadow-primary));
+}
+
+.containerImagem{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 450px;
+  height: 550px;
+  background-color: var(--color-tertiary);
+  border-radius: 20px 0 0 20px;
+}
+
+.containerBackgroundLogin{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 450px;
+  background-color: var(--color-secondary);
+  border-radius: 0 20px 20px 0px;
+}
+
+.containerLogin{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 325px;
+  height: 425px;
+  color: var(--color-secondary);
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: var(--shadow-primary);
+}
+
+.containerForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.buttonContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: .8rem;
+}
+
+.buttonContainer button{
+  width: 180px;
+  padding: .7rem;
+}
+
+@media (max-width: 768px){
+  .containerImagem{
+    width: 350px;
+  }
+
+  .containerLogin{
+    width: 260px;
+  }
+
+  .containerBackgroundLogin{
+    width: 350px;
+  }
+}
+
+@media (max-width: 320px){
+
+  .containerGeral{
+    flex-direction: column;
+
+  }
+
+  .containerImagem{
+    width: 260px;
+    height: 200px;
+    border-radius: 20px 20px  0 0;
+    
+  }
+
+  .containerLogin{
+    width: 230px;
+    height: 240px;
+  }
+
+  .containerForm h2{
+    display: none;
+  }
+
+  .containerBackgroundLogin{
+    width: 260px;
+    height: 280px;
+    border-radius: 0 0  20px 20px;
+  }
+
+
+}
+
