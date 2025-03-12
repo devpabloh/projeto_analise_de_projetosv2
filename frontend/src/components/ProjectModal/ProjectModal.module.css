@@ -114,6 +114,151 @@
     border-radius: 10px;
 }
 
+/* Estilos para a seção de histórico do projeto */
+.projectInfo {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #0d6efd;
+}
+
+.projectHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.projectHeader h3 {
+    margin: 0;
+    color: #212529;
+    font-size: 1.25rem;
+}
+
+.projectId {
+    font-size: 0.875rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.lastEditInfo {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.875rem;
+}
+
+.editLabel {
+    color: #6c757d;
+}
+
+.editUser {
+    font-weight: 600;
+    color: #0d6efd;
+}
+
+.editDate {
+    color: #6c757d;
+}
+
+.historySection {
+    margin-top: 15px;
+}
+
+.historySection h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #212529;
+}
+
+.historyEntry {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.historyHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.historyUser {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.userName {
+    font-weight: 600;
+    color: #212529;
+}
+
+.userId {
+    font-size: 0.75rem;
+    color: #6c757d;
+}
+
+.historyTime {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.changesList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.changeItem {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.changeField {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #495057;
+}
+
+.changeValues {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.oldValue, .newValue {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.oldValue {
+    color: #dc3545;
+    text-decoration: line-through;
+}
+
+.newValue {
+    color: #198754;
+}
+
+.valueLabel {
+    font-size: 0.75rem;
+    font-weight: 600;
+    min-width: 60px;
+}
+
 @media (max-width: 720px) {
     .modalStyle {
         width: 85vw;
@@ -122,5 +267,18 @@
     
     .modalStyle fieldset {
         padding: 8px;
+    }
+    
+    .historyHeader {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .changeItem {
+        padding: 6px;
+    }
+    
+    .changeValues {
+        font-size: 0.875rem;
     }
 }

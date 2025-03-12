@@ -1,4 +1,6 @@
 import dotenv from 'dotenv';
+import historyLogger from './middlewares/historyLogger.js';
+import historyRoutes from './routes/history.js';
 
 // Carrega o .env e verifica se houve erro
 const result = dotenv.config();
@@ -29,10 +31,12 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(errorHandler);
+app.use(historyLogger);
 
 app.use('/analiseDeProjetos/auth', authRoutes);
 app.use('/analiseDeProjetos/users', userRoutes);
 app.use('/analiseDeProjetos/projects', projectRoutes);
+app.use('/analiseDeProjetos/history', historyRoutes);
 
 sequelize.sync({ force: false })
     .then(() => {

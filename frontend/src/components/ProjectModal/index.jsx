@@ -12,47 +12,48 @@ import PropTypes from 'prop-types';
 
 function ProjectModal({isOpen, isClose, onSave, project, readOnly, onEdit}){
     const [formData, setFormData] = useState({
-        
-        projectName: "",
-        projectDescription: "",
-        responsibleFillingOut: "",
-        responsibleContact: "",
-        fillingDate: new Date().toISOString().split('T')[0],
-        developmentPhase: "",
-        carriedOutTests: "",
-        selectedTests: [],
-        otherTestsDescription: "",
-        frequencyAndAutomation: "",
-        testingToolsUsed: "",
-        developmentEnvironment: "",
-        approvalEnvironment: "",
-        productionEnvironment: "",
-        deploymentEnvironmentNotes: "",
-        hasDocumentation: "",
-        documentationType: "",
-        technicalDocumentation: "",
-        linkTechnicalDocumentation: "",
-        updatingTechnicalDocumentation: "",
-        updateTechnicalVersion: "",
-        functionalDocumentation: "",
-        linkFunctionalDocumentation: "",
-        updatingFunctionalDocumentation: "",
-        updateFunctionalVersion: "",
-        technicalLeaderName: "",
-        projectManagerName: "",
-        technicalSupport: "",
-        supportName: "",
-        supportPeriod: "",
-        securityMeasures: "",
-        whatSecurityMeasures: "",
-        otherSecurityMeasures: "",
-        compliance: "",
-        whatCompliance: "",
-        otherCompliance: "",
-        challengesFaced: "",
-        identifiedRisks: "",
-        additionalComments: "",
+    projectName: "",
+    projectDescription: "",
+    responsibleFillingOut: "",
+    responsibleContact: "",
+    fillingDate: new Date().toISOString().split('T')[0],
+    developmentPhase: "",
+    carriedOutTests: "",
+    selectedTests: [],
+    otherTestsDescription: "",
+    frequencyAndAutomation: "",
+    testingToolsUsed: "",
+    developmentEnvironment: "",
+    approvalEnvironment: "",
+    productionEnvironment: "",
+    deploymentEnvironmentNotes: "",
+    hasDocumentation: "",
+    documentationType: "",
+    technicalDocumentation: "",
+    linkTechnicalDocumentation: "",
+    updatingTechnicalDocumentation: "",
+    updateTechnicalVersion: "",
+    functionalDocumentation: "",
+    linkFunctionalDocumentation: "",
+    updatingFunctionalDocumentation: "",
+    updateFunctionalVersion: "",
+    technicalLeaderName: "",
+    projectManagerName: "",
+    technicalSupport: "",
+    supportName: "",
+    supportPeriod: "",
+    securityMeasures: "",
+    whatSecurityMeasures: "",
+    otherSecurityMeasures: "",
+    compliance: "",
+    whatCompliance: "",
+    otherCompliance: "",
+    challengesFaced: "",  // Ensure this matches backend field name
+    identifiedRisks: "",
+    additionalComments: "" 
     })
+
+    const [changeHistory, setChangeHistory] = useState([]);
 
     useEffect(() => {
         if (project && project.id) {
@@ -115,10 +116,60 @@ function ProjectModal({isOpen, isClose, onSave, project, readOnly, onEdit}){
                 identifiedRisks: additionalInfos.identifiedRisks || "",
                 additionalComments: additionalInfos.additionalComments || ""
             };
+            
+            // Add last editor information if available
+            if (project.Owner) {
+                formattedData.lastEditor = {
+                    id: project.Owner.id,
+                    name: project.Owner.name || project.Owner.email,
+                    date: new Date(project.updatedAt || project.createdAt).toLocaleString()
+                };
+            }
     
             setFormData(formattedData);
+            
+            // Fetch or simulate project history
+            if (project.updatedAt && project.createdAt) {
+                fetchProjectHistory(project.id);
+            }
         }
-    }, [project]);  
+    }, [project]);
+    
+    const fetchProjectHistory = async (projectId) => {
+        try {
+            // Simulação de dados - em produção, substitua por uma chamada API real
+            if (project) {  // Check if project exists
+                const mockHistory = [
+                    {
+                        id: projectId,  // Use projectId parameter instead of project.id
+                        projectName: project.projectName,
+                        userName: project.Owner?.name || project.Owner?.email || "Usuário desconhecido",
+                        userId: project.Owner?.id,
+                        changes: [
+                            { field: "Nome do Projeto", oldValue: "Versão anterior", newValue: project.projectName },
+                            { field: "Fase de Desenvolvimento", oldValue: "Em planejamento", newValue: project.developmentPhase }
+                        ],
+                        timestamp: new Date(project.updatedAt || project.createdAt).toLocaleString()
+                    }
+                ];
+                setChangeHistory(mockHistory);
+            }
+            
+            // Chamada API real (comentada)
+            // const response = await fetch(`/api/projects/${projectId}/history`);
+            // const data = await response.json();
+            // setChangeHistory(data);
+        } catch (error) {
+            console.error("Erro ao buscar histórico:", error);
+        }
+    };
+    
+    // Função para visualizar histórico completo
+    const handleViewHistory = () => {
+        // Implementar navegação para página de histórico completo
+        // Pode usar react-router ou abrir em nova janela
+        window.open(`/project-history/${project.id}`, '_blank');
+    };
 
     const modalRef = useRef()
 
@@ -149,6 +200,68 @@ function ProjectModal({isOpen, isClose, onSave, project, readOnly, onEdit}){
 
                 <fieldset>
                     <legend>{project && project.id ? (readOnly ? 'Detalhes do projeto' : 'Editar Projeto') : 'Adicionar projeto'}</legend>
+
+                    {project && project.id && (
+                        <div className={styles.projectInfo}>
+                            <div className={styles.projectHeader}>
+                                <h3>{project.projectName}</h3>
+                                <span className={styles.projectId}>ID: {project.id}</span>
+                            </div>
+                            
+                            {formData.lastEditor && (
+                                <div className={styles.lastEditInfo}>
+                                    <span className={styles.editLabel}>Última modificação:</span>
+                                    <span className={styles.editUser}>{formData.lastEditor.name}</span>
+                                    <span className={styles.editDate}>{formData.lastEditor.date}</span>
+                                </div>
+                            )}
+                            
+                            {changeHistory.length > 0 && (
+                                <div className={styles.historySection}>
+                                    <h4>Alterações Recentes</h4>
+                                    
+                                    {changeHistory.map((entry, index) => (
+                                        <div key={index} className={styles.historyEntry}>
+                                            <div className={styles.historyHeader}>
+                                                <div className={styles.historyUser}>
+                                                    <span className={styles.userName}>{entry.userName}</span>
+                                                    <span className={styles.userId}>ID: {entry.userId}</span>
+                                                </div>
+                                                <div className={styles.historyTime}>{entry.timestamp}</div>
+                                            </div>
+                                            
+                                            <div className={styles.changesList}>
+                                                {entry.changes.map((change, changeIndex) => (
+                                                    <div key={changeIndex} className={styles.changeItem}>
+                                                        <div className={styles.changeField}>{change.field}</div>
+                                                        <div className={styles.changeValues}>
+                                                            <div className={styles.oldValue}>
+                                                                <span className={styles.valueLabel}>Anterior:</span>
+                                                                <span>{change.oldValue}</span>
+                                                            </div>
+                                                            <div className={styles.newValue}>
+                                                                <span className={styles.valueLabel}>Atual:</span>
+                                                                <span>{change.newValue}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                    
+                                    <button 
+                                        type="button" 
+                                        className={styles.historyButton}
+                                        onClick={handleViewHistory}
+                                    >
+                                        Ver Histórico Completo
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    )}
+
                     <form onSubmit={handleSubmit}>
                         <FieldsetGeneralInformation
                             formData={formData}

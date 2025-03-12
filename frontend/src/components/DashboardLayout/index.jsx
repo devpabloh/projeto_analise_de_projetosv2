@@ -1,6 +1,7 @@
 import {Routes, Route, Link, useNavigate} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
+import History from '../History';
 
 
 import styles from './DashboardLayout.module.css';
@@ -86,9 +87,14 @@ const DashboardLayout = ({user, onLogout})=>{
                             <Link to="/dashboard/projects" onClick={() => setMenuOpen(false)}>Projetos</Link>
                         </li>
                         {user && user.role === 'admin' && (
-                            <li>
-                                <Link to="/dashboard/users" onClick={() => setMenuOpen(false)}>Usuários</Link>
-                            </li>
+                            <>
+                                <li>
+                                    <Link to="/dashboard/users" onClick={() => setMenuOpen(false)}>Usuários</Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/history" onClick={() => setMenuOpen(false)}>Histórico</Link>
+                                </li>
+                            </>
                         )}
                     </ul>
                 </nav>
@@ -116,6 +122,7 @@ const DashboardLayout = ({user, onLogout})=>{
                         <Route path="/" element={<DashboardHome user={user} />} />
                         <Route path="/projects" element={<ProjectList />} />
                         <Route path="/users" element={<UserManagement currentUser={user} />} />
+                        <Route path="/history" element={<History />} />
                     </Routes>
                 </div>
             </main>
